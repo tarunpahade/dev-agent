@@ -18,7 +18,7 @@ const [showResponse,setShowResponse]=useState(false)
       setIsLoading(true);
       const response = await generatePRD(email, requirements);
       console.log(response);
-      
+      setShowResponse(true)
       setPrd(response);
     } catch (error) {
       console.log(error);
@@ -41,7 +41,12 @@ const [showResponse,setShowResponse]=useState(false)
       </div>
       
       <RequirementForm onSubmit={handleSubmit} isLoading={isLoading} />
+    {showResponse ? (
       <PRDDisplay content={prd} />
+    ) : null
+
+    }
+      
     </div>
   );
 }
